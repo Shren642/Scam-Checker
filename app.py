@@ -20,11 +20,29 @@ from voice_service import voice_service
 from language_service import language_service
 from whatsapp_service import whatsapp_service
 
-app = Flask(__name__)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+app = Flask(
+    __name__,
+    template_folder=os.path.join(BASE_DIR, "templates"),
+    static_folder=os.path.join(BASE_DIR, "static"),
+    static_url_path="/static"
+)
 app.config.from_object(Config)
 
-# Ensure uploads directory exists
-os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
+# Ensure uploads directory exists safely without crashing on read-only serverless filesystems
+try:
+    os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
+except Exception:
+    app.config["UPLOAD_FOLDER"] = "/tmp/uploads"
+    try:
+        os.makedirs("/tmp/uploads", exist_ok=True)
+    except Exception:
+        pass
+
+@app.route("/favicon.ico")
+def favicon():
+    return "", 204
 
 @app.route("/")
 def index():

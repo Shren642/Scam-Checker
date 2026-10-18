@@ -21,8 +21,11 @@ class Config:
     TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN", "")
     TWILIO_PHONE_NUMBER = os.environ.get("TWILIO_PHONE_NUMBER", "")
     
-    # Upload settings
-    UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), "uploads")
+    # Upload settings (Use /tmp on Vercel and serverless environments)
+    if os.environ.get("VERCEL"):
+        UPLOAD_FOLDER = "/tmp/uploads"
+    else:
+        UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "uploads")
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16 MB max upload
     ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp", "gif", "wav", "mp3", "ogg", "m4a", "webm"}
     
