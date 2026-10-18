@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ t.guide_title }} | {{ t.app_title }}</title>
+  <meta name="description" content="{{ t.guide_subtitle }}">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="font-size-large">
+
+  <header class="top-nav">
+    <div class="nav-container">
+      <div class="brand">
+        <a href="/" class="brand-link">
+          <span class="brand-shield" aria-hidden="true">🛡️</span>
+          <div>
+            <h1 class="brand-title">{{ t.app_title }}</h1>
+            <p class="brand-subtitle">{{ t.brand_subtitle }}</p>
+          </div>
+        </a>
+      </div>
+      <div class="accessibility-controls">
+        <a href="/" class="btn-primary" style="padding: 10px 18px; text-decoration: none;">{{ t.back_to_checker }}</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container guide-page-container">
+    
+    <div class="guide-intro-card">
+      <h2>{{ t.guide_title }}</h2>
+      <p class="section-intro">{{ t.guide_subtitle }}</p>
+      <button onclick="window.print()" class="btn-secondary" style="margin-top: 10px;">{{ t.guide_print_btn }}</button>
+    </div>
+
+    <div class="guide-grid">
+
+      <!-- Guide 1: Forward a message -->
+      <article class="guide-card">
+        <div class="guide-card-header">
+          <span class="guide-badge-icon">📩</span>
+          <h3>{{ t.guide_msg_h }}</h3>
+        </div>
+        <ol class="step-list">
+          <li>{{ t.guide_msg_s1 }}</li>
+          <li>{{ t.guide_msg_s2 }}</li>
+          <li>{{ t.guide_msg_s3 }}</li>
+          <li>{{ t.guide_msg_s4 }}</li>
+          <li>{{ t.guide_msg_s5 }}</li>
+          <li>{{ t.guide_msg_s6 }}</li>
+        </ol>
+        <div class="step-tip">
+          {{ t.guide_msg_tip }}
+        </div>
+      </article>
+
+      <!-- Guide 2: Send a screenshot -->
+      <article class="guide-card">
+        <div class="guide-card-header">
+          <span class="guide-badge-icon">📷</span>
+          <h3>{{ t.guide_pic_h }}</h3>
+        </div>
+        <ol class="step-list">
+          <li>{{ t.guide_pic_s1 }}</li>
+          <li>{{ t.guide_pic_s2 }}</li>
+          <li>{{ t.guide_pic_s3 }}</li>
+          <li>{{ t.guide_pic_s4 }}</li>
+          <li>{{ t.guide_pic_s5 }}</li>
+          <li>{{ t.guide_pic_s6 }}</li>
+        </ol>
+        <div class="step-tip">
+          {{ t.guide_pic_tip }}
+        </div>
+      </article>
+
+      <!-- Guide 3: Send a voice note -->
+      <article class="guide-card">
+        <div class="guide-card-header">
+          <span class="guide-badge-icon">🎤</span>
+          <h3>{{ t.guide_mic_h }}</h3>
+        </div>
+        <ol class="step-list">
+          <li>{{ t.guide_mic_s1 }}</li>
+          <li>{{ t.guide_mic_s2 }}</li>
+          <li>{{ t.guide_mic_s3 }}</li>
+          <li>{{ t.guide_mic_s4 }}</li>
+        </ol>
+        <div class="step-tip">
+          {{ t.guide_mic_tip }}
+        </div>
+      </article>
+
+      <!-- Guide 4: Suspicious phone call -->
+      <article class="guide-card">
+        <div class="guide-card-header">
+          <span class="guide-badge-icon">📞</span>
+          <h3>{{ t.guide_phone_h }}</h3>
+        </div>
+        <div class="call-notice">
+          {{ t.guide_phone_notice }}
+        </div>
+        <ol class="step-list">
+          <li>{{ t.guide_phone_s1 }}</li>
+          <li>{{ t.guide_phone_s2 }}</li>
+          <li>{{ t.guide_phone_s3 }}</li>
+        </ol>
+      </article>
+
+    </div>
+
+    <!-- Official Help box -->
+    <div class="official-help-card">
+      <h3>{{ t.official_contacts_title }}</h3>
+      <div class="helpline-columns">
+        <div class="helpline-item">
+          <h4>{{ t.official_bank_line }}</h4>
+        </div>
+        <div class="helpline-item">
+          <h4>{{ t.official_action_fraud }}</h4>
+        </div>
+        <div class="helpline-item">
+          <h4>{{ t.official_police_101 }}</h4>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="app-footer">
+    <div class="container footer-content">
+      <p>{{ t.footer_disclaimer }}</p>
+      <a href="/" class="btn-primary" style="margin-top: 10px; display: inline-block; padding: 10px 20px; text-decoration: none;">{{ t.back_to_checker }}</a>
+    </div>
+  </footer>
+
+</body>
+</html>

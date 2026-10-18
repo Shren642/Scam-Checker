@@ -1,0 +1,254 @@
+{
+  "categories": {
+    "digital_arrest": {
+      "name": "Digital Arrest Scam",
+      "severity": "high",
+      "keywords": [
+        "digital arrest",
+        "arrest warrant",
+        "police investigation",
+        "customs department",
+        "cbi investigation",
+        "narcotics bureau",
+        "stay on video call",
+        "remain on video",
+        "do not disconnect",
+        "safe account",
+        "verification account",
+        "identity used in crime",
+        "money laundering case",
+        "do not tell family",
+        "show bank on camera"
+      ],
+      "reason_template": "Threatens you with arrest or investigation and demands you stay on a call or transfer money.",
+      "advice": [
+        "Hang up or stop replying immediately.",
+        "Real police and courts NEVER demand money transfers or 'digital arrests' over WhatsApp or video calls.",
+        "Do not transfer money to any 'safe account' - safe accounts do not exist.",
+        "Tell a trusted family member or call 101 (non-emergency police) to verify."
+      ]
+    },
+    "fake_kyc": {
+      "name": "Fake KYC / Account Suspension Scam",
+      "severity": "high",
+      "keywords": [
+        "kyc expire",
+        "kyc expired",
+        "bank kyc",
+        "update kyc",
+        "account suspended",
+        "account suspension",
+        "account blocked",
+        "account will be blocked",
+        "sim blocked",
+        "verify immediately",
+        "verify your kyc",
+        "avoid suspension",
+        "avoid account suspension",
+        "click here to avoid suspension",
+        "click this link to avoid",
+        "pan card update",
+        "aadhaar link",
+        "bank deactivated"
+      ],
+      "reason_template": "Creates fake urgency claiming your account or SIM will be blocked unless you click a link.",
+      "advice": [
+        "Do not click the link.",
+        "Do not enter any personal details or passwords.",
+        "Real banks give plenty of notice by post and do not threaten instant suspension via chat.",
+        "Check your account directly through your bank's official app or the phone number on your bank card."
+      ]
+    },
+    "upi_payment": {
+      "name": "UPI / Payment Scam",
+      "severity": "high",
+      "keywords": [
+        "upi pin",
+        "enter upi pin",
+        "send upi pin",
+        "send your upi pin",
+        "enter your upi pin",
+        "share upi pin",
+        "share your upi pin",
+        "scan qr code to receive",
+        "enter pin to receive",
+        "enter pin to receive money",
+        "refund approved enter pin",
+        "cashback claim qr",
+        "receive payment enter pin",
+        "fake refund",
+        "upi pin refund"
+      ],
+      "reason_template": "Asks you to enter or share a PIN/UPI to receive money or a refund.",
+      "advice": [
+        "NEVER enter your PIN to receive money - entering your PIN only SENDS money.",
+        "Never scan a QR code to 'receive' funds.",
+        "Do not share your PIN with anyone, including bank staff or customer service.",
+        "Cancel any pending payment requests immediately."
+      ]
+    },
+    "otp_theft": {
+      "name": "OTP / Verification Code Theft",
+      "severity": "high",
+      "keywords": [
+        "tell me the otp",
+        "share the otp",
+        "6 digit code",
+        "send the code",
+        "verification code i sent",
+        "otp sent to your mobile",
+        "read out the code",
+        "forward the code"
+      ],
+      "reason_template": "Asks you to share a security code or OTP that was sent to your phone.",
+      "advice": [
+        "Never share an OTP or security code with ANYONE.",
+        "Legitimate organisations and banks will never ask you for an OTP over the phone or message.",
+        "An OTP allows someone to steal your account or authorise money transfers."
+      ]
+    },
+    "fake_delivery": {
+      "name": "Fake Delivery / Parcel Fee Scam",
+      "severity": "high",
+      "keywords": [
+        "parcel could not be delivered",
+        "package pending",
+        "pay delivery fee",
+        "redelivery fee",
+        "pay £1",
+        "pay £1.50",
+        "pay $2",
+        "customs fee unpaid",
+        "evri redelivery",
+        "royal mail fee",
+        "dpd unpaid fee",
+        "reschedule delivery link"
+      ],
+      "reason_template": "Claims a parcel cannot be delivered until you pay a small fee via an unfamiliar link.",
+      "advice": [
+        "Do not click the link or enter your bank card details.",
+        "Scammers use small £1 or £2 fees to steal your full card numbers.",
+        "Check the official tracking website directly (e.g., royalmail.com or evri.com) using your original tracking number."
+      ]
+    },
+    "remote_access": {
+      "name": "Remote Access Scam",
+      "severity": "high",
+      "keywords": [
+        "anydesk",
+        "teamviewer",
+        "quicksupport",
+        "zoho assist",
+        "install software",
+        "download app to fix",
+        "share your screen",
+        "allow remote control",
+        "tech support remote"
+      ],
+      "reason_template": "Instructs you to install screen-sharing software or grant remote control of your phone/computer.",
+      "advice": [
+        "Do not install AnyDesk, TeamViewer, QuickSupport or any screen-sharing tool.",
+        "Disconnect your internet or turn off your device immediately if already connected.",
+        "No genuine bank or police will ask to control your phone or screen."
+      ]
+    },
+    "family_impersonation": {
+      "name": "Family Emergency / 'Hi Mum' Scam",
+      "severity": "high",
+      "keywords": [
+        "hi mum",
+        "hello mum",
+        "hi dad",
+        "hello dad",
+        "lost my phone",
+        "broke my phone",
+        "this is my new number",
+        "temporary number",
+        "pay this urgent bill",
+        "need money urgently",
+        "rent is due today",
+        "can't access banking app"
+      ],
+      "reason_template": "Claims to be your son, daughter, or grandchild who lost their phone and desperately needs money.",
+      "advice": [
+        "Do NOT send any money or pay bills to the new account.",
+        "Call your family member directly on their OLD, known phone number or speak to them in person.",
+        "Ask a personal question only your real family member would know."
+      ]
+    },
+    "fake_bank_hmrc": {
+      "name": "Fake Bank or Government/HMRC Scam",
+      "severity": "high",
+      "keywords": [
+        "hmrc tax refund",
+        "unpaid tax warrant",
+        "hmrc lawsuit",
+        "suspicious activity on your card",
+        "transfer to safe account",
+        "fraud team alert",
+        "national insurance suspended",
+        "court fine urgent"
+      ],
+      "reason_template": "Impersonates HMRC, tax authorities, or your bank's fraud department to demand payments.",
+      "advice": [
+        "HMRC and real banks NEVER threaten arrest or demand immediate bank transfers over chat.",
+        "HMRC never sends tax refunds via WhatsApp with clickable payment links.",
+        "Call your bank using the phone number printed on the back of your bank card."
+      ]
+    },
+    "investment_crypto": {
+      "name": "Guaranteed Profit / Crypto Scam",
+      "severity": "high",
+      "keywords": [
+        "guaranteed profit",
+        "100% profit",
+        "double your money",
+        "daily return",
+        "crypto investment",
+        "forex trading bot",
+        "risk free investment"
+      ],
+      "reason_template": "Promises guaranteed or risk-free investment returns.",
+      "advice": [
+        "High returns with 'no risk' are always a scam.",
+        "Never send money or crypto to strangers online.",
+        "Legitimate financial advisers never promise guaranteed profits."
+      ]
+    },
+    "lottery_prize": {
+      "name": "Lottery / Prize Scam",
+      "severity": "high",
+      "keywords": [
+        "you won lottery",
+        "claim your prize",
+        "winner of prize draw",
+        "lucky winner",
+        "pay processing fee to release prize",
+        "customs clearance fee for prize"
+      ],
+      "reason_template": "Claims you won a lottery or giveaway you never entered, asking for an upfront fee.",
+      "advice": [
+        "You cannot win a lottery you never bought a ticket for.",
+        "Legitimate prizes never ask you to pay an upfront fee to claim winnings.",
+        "Do not send money or bank details."
+      ]
+    }
+  },
+  "high_risk_triggers": [
+    "urgent",
+    "immediately",
+    "within 24 hours",
+    "within 1 hour",
+    "act now",
+    "pay now",
+    "transfer money",
+    "send money",
+    "buy gift cards",
+    "bitcoin",
+    "crypto",
+    "safe account",
+    "otp",
+    "pin",
+    "password"
+  ]
+}

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ t.app_title }} | {{ t.brand_subtitle }}</title>
+  <meta name="description" content="{{ t.brand_subtitle }} - {{ t.reassurance_banner_text }}">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="font-size-large">
+
+  <!-- Top Navigation Bar -->
+  <header class="top-nav">
+    <div class="container nav-container">
+      
+      <!-- Brand Logo & Titles -->
+      <div class="brand">
+        <div class="brand-shield" aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L4 5V11C4 16.55 7.42 21.74 12 23C16.58 21.74 20 16.55 20 11V5L12 2Z" fill="#2563EB" stroke="#1D4ED8" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M9 11.5L11 13.5L15 9.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1 class="brand-title" id="lblAppTitle">{{ t.app_title }}</h1>
+          <p class="brand-subtitle" id="lblBrandSubtitle">{{ t.brand_subtitle }}</p>
+        </div>
+      </div>
+      
+      <!-- Header Controls: Language, Text Size & Settings -->
+      <div class="nav-controls">
+        <!-- Language Selector -->
+        <div class="lang-selector-pill">
+          <span class="globe-icon" aria-hidden="true">🌐</span>
+          <label for="languageSelect" class="sr-only">{{ t.choose_language_label }}</label>
+          <select id="languageSelect" aria-label="{{ t.choose_language_label }}">
+            <option value="en" {% if lang == 'en' %}selected{% endif %}>English</option>
+            <option value="pa" {% if lang == 'pa' %}selected{% endif %}>ਪੰਜਾਬੀ (Punjabi)</option>
+            <option value="pl" {% if lang == 'pl' %}selected{% endif %}>Polski</option>
+            <option value="ro" {% if lang == 'ro' %}selected{% endif %}>Română</option>
+            <option value="pt" {% if lang == 'pt' %}selected{% endif %}>Português</option>
+          </select>
+          <span class="select-chevron" aria-hidden="true">▾</span>
+        </div>
+
+        <!-- Text Size Controls -->
+        <div class="text-size-widget" aria-label="Text size adjustment">
+          <span class="text-size-label" id="lblTextSize">{{ t.text_size_label }}</span>
+          <div class="size-btn-group">
+            <button type="button" id="btnFontNormal" class="size-btn size-sm" title="{{ t.font_normal_title }}">A</button>
+            <button type="button" id="btnFontLarge" class="size-btn size-md active" title="{{ t.font_large_title }}">A</button>
+            <button type="button" id="btnFontXLarge" class="size-btn size-lg" title="{{ t.font_xlarge_title }}">A</button>
+          </div>
+          <!-- Settings / Help Guide Trigger -->
+          <button type="button" id="btnSettingsGuide" class="btn-settings-icon" title="{{ t.how_to_send_pill }}" aria-label="Settings and Guide">
+            <span aria-hidden="true">⚙️</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Reassurance Banner -->
+  <aside class="container reassurance-banner-wrapper" role="region" aria-label="Support and Reassurance">
+    <div class="reassurance-card">
+      <div class="reassurance-left">
+        <span class="reassurance-shield-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L4 5V11C4 16.55 7.42 21.74 12 23C16.58 21.74 20 16.55 20 11V5L12 2Z" fill="#3B82F6"/>
+            <path d="M9 11.5L11 13.5L15 9.5" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <p class="reassurance-text" id="lblReassuranceBanner">
+          <strong>Never feel embarrassed.</strong> Scams are designed to look real. You're doing the right thing by checking first.
+        </p>
+      </div>
+      <div class="reassurance-right">
+        <a href="#how-it-works" id="lblYoureNotAlone" class="not-alone-link">
+          <span class="heart-icon" aria-hidden="true">🤍</span>
+          <span>{{ t.youre_not_alone }}</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main 2-Column Application Layout -->
+  <main class="container main-layout">
+    
+    <!-- Left Column: Input and Selection Card -->
+    <section class="panel-card input-panel" aria-label="Scam Checker Input Panel">
+      
+      <!-- Section Header -->
+      <div class="panel-header">
+        <div class="search-badge" aria-hidden="true">
+          <span>🔍</span>
+        </div>
+        <div class="panel-header-text">
+          <h2 class="panel-title" id="mainHeading">{{ t.main_heading }}</h2>
+          <p class="panel-subtitle" id="sectionIntro">{{ t.section_intro }}</p>
+        </div>
+      </div>
+
+      <!-- 3 Primary Action Cards -->
+      <div class="action-cards-grid" role="tablist" aria-label="Input options">
+        
+        <!-- Card 1: Check a message -->
+        <button type="button" id="tabText" class="action-card card-blue active" role="tab" aria-selected="true" aria-controls="paneText">
+          <div class="card-left">
+            <div class="action-icon-badge badge-blue" aria-hidden="true">
+              <span class="tab-icon">💬</span>
+            </div>
+            <span class="action-label" id="lblTabMsg">{{ t.tab_message }}</span>
+          </div>
+          <span class="action-chevron chevron-blue" aria-hidden="true">›</span>
+        </button>
+
+        <!-- Card 2: Send a screenshot -->
+        <button type="button" id="tabImage" class="action-card card-green" role="tab" aria-selected="false" aria-controls="paneImage">
+          <div class="card-left">
+            <div class="action-icon-badge badge-green" aria-hidden="true">
+              <span class="tab-icon">📷</span>
+            </div>
+            <span class="action-label" id="lblTabPic">{{ t.tab_screenshot }}</span>
+          </div>
+          <span class="action-chevron chevron-green" aria-hidden="true">›</span>
+        </button>
+
+        <!-- Card 3: Speak / Voice note -->
+        <button type="button" id="tabVoice" class="action-card card-purple" role="tab" aria-selected="false" aria-controls="paneVoice">
+          <div class="card-left">
+            <div class="action-icon-badge badge-purple" aria-hidden="true">
+              <span class="tab-icon">🎙️</span>
+            </div>
+            <span class="action-label" id="lblTabMic">{{ t.tab_voice }}</span>
+          </div>
+          <span class="action-chevron chevron-purple" aria-hidden="true">›</span>
+        </button>
+
+      </div>
+
+      <!-- "Try an example scam" Container -->
+      <div class="example-scams-card">
+        <div class="example-header">
+          <span class="bulb-icon" aria-hidden="true">💡</span>
+          <strong id="lblTryExample">{{ t.try_example_title }}</strong>
+        </div>
+        <div class="example-chips-wrapper">
+          <button type="button" class="chip-btn" data-scenario="digital_arrest" id="chipDigitalArrest">{{ t.scenario_btn_digital_arrest }}</button>
+          <button type="button" class="chip-btn" data-scenario="fake_kyc" id="chipFakeKyc">{{ t.scenario_btn_fake_kyc }}</button>
+          <button type="button" class="chip-btn" data-scenario="parcel_fee" id="chipParcelFee">{{ t.scenario_btn_parcel_fee }}</button>
+          <button type="button" class="chip-btn" data-scenario="hi_mum" id="chipHiMum">{{ t.scenario_btn_hi_mum }}</button>
+          <button type="button" class="chip-btn" data-scenario="upi_pin" id="chipUpiPin">{{ t.scenario_btn_upi_pin }}</button>
+          <button type="button" class="chip-btn chip-legit" data-scenario="legit_alert" id="chipLegitAlert">{{ t.scenario_btn_legit_alert }}</button>
+        </div>
+      </div>
+
+      <!-- Input Panes & Form -->
+      <form id="scamCheckForm" class="checker-form" onsubmit="return false;">
+        
+        <!-- Tab Pane 1: Text Message (Default Active) -->
+        <div id="paneText" class="tab-pane active" role="tabpanel" aria-labelledby="tabText">
+          <div class="input-header-row">
+            <span class="doc-icon-badge" aria-hidden="true">📄</span>
+            <div class="input-titles">
+              <label for="messageInput" class="input-label" id="lblInputMsg">{{ t.input_message_label }}</label>
+              <p class="input-hint" id="lblInputMsgHint">{{ t.input_message_hint }}</p>
+            </div>
+          </div>
+          
+          <div class="textarea-relative-wrapper">
+            <textarea id="messageInput" rows="4" placeholder="{{ t.input_message_placeholder }}"></textarea>
+            <!-- Paperclip quick file attach button -->
+            <button type="button" id="btnAttachImage" class="btn-paperclip" title="{{ t.tab_screenshot }}" aria-label="Attach screenshot or photo">
+              <span aria-hidden="true">📎</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab Pane 2: Screenshot Upload -->
+        <div id="paneImage" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabImage">
+          <div class="input-header-row">
+            <span class="doc-icon-badge" aria-hidden="true">📷</span>
+            <div class="input-titles">
+              <label class="input-label" id="lblInputPic">{{ t.input_screenshot_label }}</label>
+              <p class="input-hint" id="lblInputPicHint">{{ t.input_screenshot_hint }}</p>
+            </div>
+          </div>
+
+          <div class="file-dropzone" id="imageDropzone">
+            <span class="upload-icon" aria-hidden="true">📷</span>
+            <p><strong id="lblDropzonePrompt">{{ t.dropzone_prompt }}</strong></p>
+            <span class="file-limits" id="lblDropzoneFormats">{{ t.dropzone_formats }}</span>
+            <input type="file" id="imageInput" accept="image/*" class="sr-only">
+          </div>
+          
+          <div id="imagePreviewContainer" class="image-preview-box hidden">
+            <img id="imagePreview" alt="Screenshot preview" />
+            <button type="button" id="btnRemoveImage" class="btn-secondary small">{{ t.remove_picture_btn }}</button>
+          </div>
+        </div>
+
+        <!-- Tab Pane 3: Voice Recording -->
+        <div id="paneVoice" class="tab-pane hidden" role="tabpanel" aria-labelledby="tabVoice">
+          <div class="input-header-row">
+            <span class="doc-icon-badge" aria-hidden="true">🎙️</span>
+            <div class="input-titles">
+              <label class="input-label" id="lblInputVoice">{{ t.input_voice_label }}</label>
+              <p class="input-hint" id="lblInputVoiceHint">{{ t.input_voice_hint }}</p>
+            </div>
+          </div>
+
+          <div class="voice-recorder-box">
+            <button type="button" id="btnRecordToggle" class="record-btn" aria-label="Start recording voice">
+              <span class="mic-icon" aria-hidden="true">🎤</span>
+              <span id="recordBtnText">{{ t.voice_record_btn }}</span>
+            </button>
+            <p id="recordStatus" class="record-status-text">{{ t.voice_status_ready }}</p>
+            
+            <audio id="audioPlayback" controls class="hidden voice-player"></audio>
+            <input type="file" id="audioFileInput" accept="audio/*" class="sr-only">
+          </div>
+        </div>
+
+        <!-- Action Buttons: Check Now & Clear -->
+        <div class="form-actions-row">
+          <button type="button" id="btnCheckNow" class="btn-check-primary">
+            <span class="btn-icon" aria-hidden="true">🔍</span>
+            <span id="btnCheckLabel">{{ t.check_now_btn }}</span>
+            <span class="btn-arrow" aria-hidden="true">›</span>
+          </button>
+          
+          <button type="button" id="btnClearForm" class="btn-clear-secondary">
+            <span class="btn-icon" aria-hidden="true">🗑️</span>
+            <span>{{ t.clear_btn }}</span>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Loading State -->
+      <div id="loadingState" class="loading-state hidden" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <p><strong id="lblLoadingTitle">{{ t.loading_title }}</strong></p>
+        <span class="loading-sub" id="lblLoadingSub">{{ t.loading_subtitle }}</span>
+      </div>
+
+    </section>
+
+    <!-- Right Column: Results & Interactive Recovery Flow -->
+    <section class="panel-card result-panel" aria-label="Scam Check Results Panel">
+      
+      <!-- Placeholder when explicitly cleared or empty -->
+      <div id="resultPlaceholder" class="result-placeholder-card hidden">
+        <div class="placeholder-icon">💬</div>
+        <h3 id="lblPlaceholderTitle">{{ t.placeholder_title }}</h3>
+        <p id="lblPlaceholderSubtitle">{{ t.placeholder_subtitle }}</p>
+        <ul class="simple-bullet-list">
+          <li id="lblPlaceholderB1">{{ t.placeholder_b1 }}</li>
+          <li id="lblPlaceholderB2">{{ t.placeholder_b2 }}</li>
+          <li id="lblPlaceholderB3">{{ t.placeholder_b3 }}</li>
+        </ul>
+        <div class="whatsapp-badge">
+          <span id="lblWhatsappBadge">{{ t.whatsapp_badge }}</span>
+        </div>
+      </div>
+
+      <!-- Active Result Card (Populated by default with legitimate sample or live analysis) -->
+      <article id="resultCard" class="result-content-wrapper" aria-live="assertive">
+        
+        <!-- Status Card (Circle icon, Risk Title, Risk Level Badge) -->
+        <div id="resultRiskBanner" class="risk-status-card risk-green">
+          <div class="status-circle-badge" id="resultStatusCircle" aria-hidden="true">
+            <span id="resultBadgeIcon">✓</span>
+          </div>
+          <div class="status-title-box">
+            <h3 id="resultTitle" class="status-main-title">{{ t.risk_legitimate }}</h3>
+            <div class="status-badge-row">
+              <span id="resultRiskBadge" class="risk-pill-badge badge-green">{{ t.risk_low_badge }}</span>
+              <span id="resultScamType" class="scam-type-pill hidden">General Review</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- "Hear this advice" Bar -->
+        <div class="hear-advice-card" id="btnListenAdvice" role="button" tabindex="0" aria-label="Listen to advice aloud">
+          <div class="hear-advice-left">
+            <span class="speaker-icon" aria-hidden="true">🔊</span>
+            <span id="listenBtnLabel" class="hear-advice-text">{{ t.hear_advice_btn }}</span>
+          </div>
+          <span class="hear-advice-chevron" aria-hidden="true">›</span>
+        </div>
+
+        <!-- Explanation Card ("No obvious scam signs were found." / "Why it looks suspicious:") -->
+        <div class="result-detail-card card-info" id="resultWhyBox">
+          <div class="detail-card-header">
+            <div class="circle-badge badge-info" aria-hidden="true">
+              <span id="whyHeaderIcon">ℹ️</span>
+            </div>
+            <h4 id="resultWhyHdr" class="detail-card-title">{{ t.legit_no_signs_found }}</h4>
+          </div>
+          <p id="resultWhySubtitle" class="detail-card-subtitle">{{ t.legit_desc }}</p>
+          <ul id="resultWhyList" class="result-bullets warning-list hidden">
+            <!-- Populated dynamically when scam/suspicious -->
+          </ul>
+        </div>
+
+        <!-- "Before acting:" Advice Card / "What to do:" -->
+        <div class="result-detail-card card-action" id="resultDoBox">
+          <div class="detail-card-header">
+            <div class="circle-badge badge-action" aria-hidden="true">
+              <span id="doHeaderIcon">✓</span>
+            </div>
+            <h4 id="resultDoHdr" class="detail-card-title">{{ t.legit_before_acting }}</h4>
+          </div>
+          <ul id="resultDoList" class="result-bullets action-list">
+            <li>{{ t.legit_check_sender }}</li>
+            <li>{{ t.legit_official_app }}</li>
+            <li>{{ t.legit_never_share_otp }}</li>
+          </ul>
+        </div>
+
+        <!-- What NOT to do (Strictly CONDITIONAL: Hidden for legitimate results) -->
+        <div id="resultDontBox" class="result-detail-card card-dont hidden">
+          <div class="detail-card-header">
+            <div class="circle-badge badge-dont" aria-hidden="true">
+              <span>✕</span>
+            </div>
+            <h4 id="resultDontHdr" class="detail-card-title">{{ t.do_not_do_heading }}</h4>
+          </div>
+          <ul id="resultDontList" class="result-bullets dont-list">
+            <!-- Populated dynamically -->
+          </ul>
+        </div>
+
+        <!-- Reassurance Message (Hidden for simple legitimate view) -->
+        <div class="reassurance-box hidden" id="resultReassuranceBox">
+          <p id="resultReassurance">{{ t.reassurance_msg }}</p>
+        </div>
+
+        <!-- "Check another message" Button for Legitimate Result -->
+        <div id="legitResetBar" class="check-another-card" role="button" tabindex="0" aria-label="{{ t.check_another_btn }}">
+          <div class="check-another-left">
+            <span class="refresh-icon" aria-hidden="true">🔄</span>
+            <span id="btnCheckAnotherLegitText">{{ t.check_another_btn }}</span>
+          </div>
+          <span class="check-another-chevron" aria-hidden="true">›</span>
+        </div>
+
+        <!-- Step-by-Step Question: "Have you already sent something?" (Strictly CONDITIONAL: Hidden for legitimate) -->
+        <div id="alreadyActedPromptBox" class="recovery-step1-card hidden">
+          <h4 id="alreadyActedPrompt" class="step1-title">{{ t.already_acted_question }}</h4>
+          <div class="step1-buttons-row">
+            <button type="button" id="btnAlreadyYes" class="btn-step-yes">{{ t.already_acted_yes }}</button>
+            <button type="button" id="btnAlreadyNo" class="btn-step-no">{{ t.already_acted_no }}</button>
+          </div>
+        </div>
+
+        <!-- Preventative Reassurance if User clicked NO -->
+        <div id="noActionBox" class="no-action-card hidden">
+          <span class="shield-green-icon" aria-hidden="true">✅</span>
+          <p id="noActionText">{{ t.no_action_reassurance }}</p>
+          <div class="check-another-card" id="btnCheckAnotherNoAction" role="button" tabindex="0" style="margin-top: 14px;">
+            <div class="check-another-left">
+              <span class="refresh-icon" aria-hidden="true">🔄</span>
+              <span>{{ t.check_another_btn }}</span>
+            </div>
+            <span class="check-another-chevron" aria-hidden="true">›</span>
+          </div>
+        </div>
+
+        <!-- STEP 2 RECOVERY: What did you send or do? (Revealed ONLY if YES clicked) -->
+        <div id="recoverySelectBox" class="recovery-selection-card hidden">
+          <h4 id="lblRecoveryQ" class="recovery-q-title">{{ t.recovery_question }}</h4>
+          <p id="lblRecoverySub" class="recovery-q-sub">{{ t.recovery_options_title }}</p>
+          
+          <div class="recovery-grid">
+            <button type="button" class="recovery-option-btn" data-cat="money">
+              <span class="rec-icon">💵</span>
+              <span class="rec-label" id="lblOptMoney">{{ t.opt_money }}</span>
+            </button>
+            <button type="button" class="recovery-option-btn" data-cat="otp">
+              <span class="rec-icon">🔢</span>
+              <span class="rec-label" id="lblOptOtp">{{ t.opt_otp }}</span>
+            </button>
+            <button type="button" class="recovery-option-btn" data-cat="password">
+              <span class="rec-icon">🔑</span>
+              <span class="rec-label" id="lblOptPassword">{{ t.opt_password }}</span>
+            </button>
+            <button type="button" class="recovery-option-btn" data-cat="bank_card">
+              <span class="rec-icon">💳</span>
+              <span class="rec-label" id="lblOptBankCard">{{ t.opt_bank_card }}</span>
+            </button>
+            <button type="button" class="recovery-option-btn" data-cat="personal_id">
+              <span class="rec-icon">🪪</span>
+              <span class="rec-label" id="lblOptPersonalId">{{ t.opt_personal_id }}</span>
+            </button>
+            <button type="button" class="recovery-option-btn" data-cat="clicked_link">
+              <span class="rec-icon">🔗</span>
+              <span class="rec-label" id="lblOptClickedLink">{{ t.opt_clicked_link }}</span>
+            </button>
+            <button type="button" class="recovery-option-btn" data-cat="installed_app">
+              <span class="rec-icon">📱</span>
+              <span class="rec-label" id="lblOptInstalledApp">{{ t.opt_installed_app }}</span>
+            </button>
+            <button type="button" class="recovery-option-btn" data-cat="something_else">
+              <span class="rec-icon">❓</span>
+              <span class="rec-label" id="lblOptSomethingElse">{{ t.opt_something_else }}</span>
+            </button>
+          </div>
+
+          <!-- Recovery voice prompt option -->
+          <div class="recovery-voice-bar">
+            <button type="button" id="btnRecoveryVoice" class="btn-voice-rec">
+              <span class="mic-icon" aria-hidden="true">🎤</span>
+              <span id="lblRecoverySpeak">{{ t.recovery_speak_btn }}</span>
+            </button>
+            <p id="recoveryVoiceStatus" class="recovery-voice-status hidden"></p>
+          </div>
+
+          <!-- Something else typing box -->
+          <div id="somethingElseBox" class="something-else-box hidden">
+            <label for="somethingElseInput" class="input-label">
+              <strong id="lblSomethingElsePrompt">{{ t.advice_something_else_prompt }}</strong>
+            </label>
+            <textarea id="somethingElseInput" rows="3" placeholder="{{ t.advice_something_else_placeholder }}"></textarea>
+            <div style="margin-top: 10px;">
+              <button type="button" id="btnSubmitSomethingElse" class="btn-check-primary small">{{ t.advice_something_else_submit }}</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Targeted Advice (Shows ONLY relevant 3-4 bullet points for the selected action) -->
+        <div id="targetedAdviceBox" class="targeted-advice-card hidden" role="alert">
+          <div class="targeted-advice-header">
+            <span class="alarm-icon" aria-hidden="true">⚠️</span>
+            <h4 id="targetedAdviceTitle">{{ t.act_now_title }}</h4>
+          </div>
+          
+          <ul id="targetedAdvicePoints" class="targeted-points-list">
+            <!-- Populated dynamically with targeted advice -->
+          </ul>
+
+          <div class="uk-helpline-box">
+            <strong id="lblHelplineTitle">{{ t.official_contacts_title }}</strong>
+            <p id="lblHelplineBank">• {{ t.official_bank_line }}</p>
+            <p id="lblHelplineFraud">• {{ t.official_action_fraud }}</p>
+            <p id="lblHelplinePolice">• {{ t.official_police_101 }}</p>
+          </div>
+
+          <div class="targeted-actions-bar">
+            <button type="button" id="btnBackToRecovery" class="btn-clear-secondary">{{ t.back_btn }}</button>
+            <div class="check-another-card inline-check" id="btnCheckAnotherFromAdvice" role="button" tabindex="0">
+              <span class="refresh-icon" aria-hidden="true">🔄</span>
+              <span>{{ t.check_another_btn }}</span>
+              <span class="check-another-chevron" aria-hidden="true">›</span>
+            </div>
+          </div>
+        </div>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- Help & Guide Modal -->
+  <div id="guideModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="guideModalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="guideModalTitle">{{ t.guide_title }}</h3>
+        <button type="button" id="btnCloseGuide" class="btn-close" aria-label="Close guide">{{ t.close_btn }}</button>
+      </div>
+      <div class="modal-body">
+        <div class="guide-nav-buttons">
+          <button class="guide-tab-btn active" data-guide="message" id="modalGuideTabMsg">{{ t.guide_tab_msg }}</button>
+          <button class="guide-tab-btn" data-guide="screenshot" id="modalGuideTabPic">{{ t.guide_tab_pic }}</button>
+          <button class="guide-tab-btn" data-guide="voice" id="modalGuideTabMic">{{ t.guide_tab_mic }}</button>
+          <button class="guide-tab-btn" data-guide="call" id="modalGuideTabPhone">{{ t.guide_tab_phone }}</button>
+        </div>
+        <div id="guideContentBox" class="guide-instructions-content">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <span class="footer-shield" aria-hidden="true">🛡️</span>
+        <p id="lblFooterDisclaimer">{{ t.footer_disclaimer }}</p>
+      </div>
+      <div class="footer-right">
+        <p id="lblFooterStaySafe">{{ t.stay_safe_footer }}</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
